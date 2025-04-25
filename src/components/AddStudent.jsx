@@ -9,6 +9,10 @@ function AddStudent(props) {
   const [graduationYear, setGraduationYear] = useState(2023);
   const [graduated, setGraduated] = useState(false);
 
+  const handleInput = (setState) => {
+    return (e) => setState(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -44,52 +48,30 @@ function AddStudent(props) {
             type="text"
             placeholder="Full Name"
             value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            onChange={handleInput(setFullName)}
           />
         </label>
 
         <label>
           Profile Image
-          <input
-            name="image"
-            type="url"
-            placeholder="Profile Image"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
+          <input name="image" type="url" placeholder="Profile Image" value={image} onChange={handleInput(setImage)} />
         </label>
 
         <label>
           Phone
-          <input
-            name="phone"
-            type="tel"
-            placeholder="Phone"
-            value={phone}
-            onChange={(e) => {
-              setPhone(e.target.value);
-            }}
-          />
+          <input name="phone" type="tel" placeholder="Phone" value={phone} onChange={handleInput(setPhone)} />
         </label>
 
         <label>
           Email
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
+          <input name="email" type="email" placeholder="Email" value={email} onChange={handleInput(setEmail)} />
         </label>
       </div>
 
       <div>
         <label>
           Program
-          <select name="program" value={program} onChange={(e) => setProgram(e.target.value)}>
+          <select name="program" value={program} onChange={handleInput(setProgram)}>
             <option value="">-- None --</option>
             <option value="Web Dev">Web Dev</option>
             <option value="UXUI">UXUI</option>
@@ -108,22 +90,13 @@ function AddStudent(props) {
             min={2023}
             max={2030}
             value={graduationYear}
-            onChange={(e) => {
-              setGraduationYear(e.target.value);
-            }}
+            onChange={handleInput(setGraduationYear)}
           />
         </label>
 
         <label>
           Graduated
-          <input
-            name="graduated"
-            type="checkbox"
-            checked={graduated}
-            onChange={(e) => {
-              setGraduated(e.target.value);
-            }}
-          />
+          <input name="graduated" type="checkbox" checked={graduated} onChange={handleInput(setGraduated)} />
         </label>
 
         <button type="submit">Add Student</button>
