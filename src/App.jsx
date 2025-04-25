@@ -1,14 +1,20 @@
-import "./App.css";
-import { useState } from "react";
-import Navbar from "./components/Navbar";
-import TableHeader from "./components/TableHeader";
-import StudentCard from "./components/StudentCard";
+import './App.css';
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import TableHeader from './components/TableHeader';
+import StudentCard from './components/StudentCard';
 
-import studentsData from "./assets/students.json";
+import studentsData from './assets/students.json';
 
 function App() {
   const [students, setStudents] = useState(studentsData);
-
+  const [fullName, steFullName] = useState('');
+  const [image, setImage] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [program, setProgram] = useState('');
+  const [graduationYear, setGraduationYear] = useState(2023);
+  const [graduated, setGraduated] = useState(false);
 
   return (
     <div className="App pt-20">
@@ -70,14 +76,11 @@ function App() {
 
           <button type="submit">Add Student</button>
         </div>
-
       </form>
       {/* FORM END */}
 
-
       {/* TABLE/LIST HEADER */}
       <TableHeader />
-
 
       {/* STUDENT LIST */}
       {students &&
