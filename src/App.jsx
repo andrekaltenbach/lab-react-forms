@@ -16,12 +16,39 @@ function App() {
   const [graduationYear, setGraduationYear] = useState(2023);
   const [graduated, setGraduated] = useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newStudent = {
+      fullName: fullName,
+      email: email,
+      phone: phone,
+      program: program,
+      image: image,
+      graduationYear: graduationYear,
+      graduated: graduated,
+    };
+
+    const newStudentsArr = [newStudent, ...students];
+    console.log(newStudentsArr);
+
+    setStudents(newStudentsArr);
+
+    setFullName('');
+    setImage('');
+    setPhone('');
+    setEmail('');
+    setProgram('');
+    setGraduationYear(2023);
+    setGraduated(false);
+  };
+
   return (
     <div className="App pt-20">
       <Navbar />
 
       {/* FORM */}
-      <form>
+      <form onSubmit={handleSubmit}>
         <span>Add a Student</span>
         <div>
           <label>
